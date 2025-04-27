@@ -24,9 +24,6 @@
     <h1>Official Zigbee2MQTT Home Assistant add-on</h1>
 </div>
 
-> [!CAUTION]
-> If you're using a Raspberry Pi, ensure you have at least a Raspberry Pi 4, as running it on a Raspberry Pi 3 may cause instability due to its limited resources.
-
 ## Installation
 
 1. If you don't have an MQTT broker yet; in Home Assistant go to **[Settings → Add-ons → Add-on store](https://my.home-assistant.io/redirect/supervisor_store/)** and install the **[Mosquitto broker](https://my.home-assistant.io/redirect/supervisor_addon/?addon=core_mosquitto)** add-on, then start it.
@@ -52,10 +49,10 @@
 1. Wait till Zigbee2MQTT starts and press **OPEN WEB UI** to verify Zigbee2MQTT started correctly.
    - If it shows `502: Bad Gateway` wait a bit more and refresh the page.
    - If this takes too long (e.g. 2 minutes +) check the **Log** tab to see what went wrong.
-   - In case the add-on fails to start with the following error: `USB adapter discovery error (No valid USB adapter found). Specify valid 'adapter' and 'port' in your configuration.`, we need to fill in the `serial` section (which we skipped in step 5). Format can be found [here](https://www.zigbee2mqtt.io/guide/configuration/adapter-settings.html#adapter-settings), but skip the initial `serial:` indent. e.g.: <br>
+   - In case the add-on fails to start with the following error: `Error: No path provided and failed to auto detect path`, we need to fill in the `serial` section (which we skipped in step 5). Format can be found [here](https://www.zigbee2mqtt.io/guide/configuration/adapter-settings.html#adapter-settings), but skip the initial `serial:` indent. e.g.: <br>
      ```yaml
-     adapter: zstack
      port: /dev/serial/by-id/usb-Texas_Instruments_TI_CC2531_USB_CDC___0X00124B0018ED3DDF-if00
+     adapter: zstack
      ```
      If you don't know the port and you have just one USB device connected to your machine try `/dev/ttyUSB0` or `/dev/ttyAMA0`. Else use the [Home Assistant CLI](https://www.home-assistant.io/common-tasks/os#home-assistant-via-the-command-line) and execute `ha hardware info` to find out.
 
